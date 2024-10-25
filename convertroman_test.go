@@ -26,35 +26,34 @@ var testCases = map[string]int{
 
 func TestFromInt(t *testing.T) {
 	for expected, input := range testCases {
-		out, err := FromInt(input)
-		if err != nil {
-			t.Errorf("IntToString(%d) returned an error %s", input, err.Error())
-		}
-		if out != expected {
-			t.Errorf("IntToString(%d) = %s; want %s", input, out, expected)
+		out := FromInt(input)
+		if out == "OOB" {
+			t.Errorf("FromInt(%d) returned an OOB (out of bounds) error", input)
+		} else if out != expected {
+			t.Errorf("FromInt(%d) = %s; want %s", input, out, expected)
 		}
 	}
-	_, err := FromInt(100000)
-	if err == nil {
-		t.Errorf("IntToString(%d) expected an error", 100000)
+	out := FromInt(100000)
+	if out != "OOB" {
+		t.Errorf("FromInt(%d) expected an error", 100000)
 	}
-	_, err = FromInt(0)
-	if err == nil {
-		t.Errorf("IntToString(%d) expected an error", 0)
+	out = FromInt(0)
+	if out != "OOB" {
+		t.Errorf("FromInt(%d) expected an error", 0)
 	}
 }
 
 func BenchmarkFromInt(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		_, _ = FromInt(3999)
+		_ = FromInt(3999)
 	}
 }
 
 func ExampleFromInt() {
-	roman, err := FromInt(4)
-	if err != nil {
-		panic(err)
+	roman := FromInt(4)
+	if roman == "OOB" {
+		panic("Input integer is out of bounds")
 	}
 	fmt.Println(roman == "IV") // True
 }
