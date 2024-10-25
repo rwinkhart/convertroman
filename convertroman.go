@@ -7,10 +7,10 @@ package convertroman
 var (
 	// lookup arrays used for converting from an int to a roman numeral extremely quickly.
 	// method from here: https://rosettacode.org/wiki/Roman_numerals/Encode#Go
-	r0 = [10]string{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
-	r1 = [10]string{"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"}
-	r2 = [10]string{"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}
-	r3 = [4]string{"", "M", "MM", "MMM"}
+	r0 = [10]string{"", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix"}
+	r1 = [10]string{"", "x", "xx", "xxx", "xl", "l", "lx", "lxx", "lxxx", "xc"}
+	r2 = [10]string{"", "c", "cc", "ccc", "cd", "d", "dc", "dcc", "dccc", "cm"}
+	r3 = [4]string{"", "m", "mm", "mmm"}
 )
 
 // FromInt converts an integer value to a roman numeral string.

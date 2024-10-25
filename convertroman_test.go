@@ -6,22 +6,22 @@ import (
 )
 
 var testCases = map[string]int{
-	"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6,
-	"VII": 7, "VIII": 8, "IX": 9, "X": 10, "XI": 11, "XII": 12,
-	"XIII": 13, "XIV": 14, "XV": 15, "XVI": 16, "XVII": 17,
-	"XVIII": 18, "XIX": 19, "XX": 20, "XXXI": 31, "XXXII": 32,
-	"XXXIII": 33, "XXXIV": 34, "XXXV": 35, "XXXVI": 36, "XXXVII": 37,
-	"XXXVIII": 38, "XXXIX": 39, "XL": 40, "XLI": 41, "XLII": 42,
-	"XLIII": 43, "XLIV": 44, "XLV": 45, "XLVI": 46, "XLVII": 47,
-	"XLVIII": 48, "XLIX": 49, "L": 50, "LXXXIX": 89, "XC": 90,
-	"XCI": 91, "XCII": 92, "XCIII": 93, "XCIV": 94, "XCV": 95,
-	"XCVI": 96, "XCVII": 97, "XCVIII": 98, "XCIX": 99, "C": 100,
-	"CI": 101, "CII": 102, "CIII": 103, "CIV": 104, "CV": 105,
-	"CVI": 106, "CVII": 107, "CVIII": 108, "CIX": 109, "CXLIX": 149,
-	"CCCXLIX": 349, "CDLVI": 456, "D": 500, "DCIV": 604, "DCCLXXXIX": 789,
-	"DCCCXLIX": 849, "CMIV": 904, "M": 1000, "MVII": 1007, "MLXVI": 1066,
-	"MCCXXXIV": 1234, "MDCCLXXVI": 1776, "MMXXI": 2021, "MMDCCCVI": 2806,
-	"MMCMXCIX": 2999, "MMM": 3000, "MMMCMLXXIX": 3979, "MMMCMXCIX": 3999,
+	"i": 1, "ii": 2, "iii": 3, "iv": 4, "v": 5, "vi": 6,
+	"vii": 7, "viii": 8, "ix": 9, "x": 10, "xi": 11, "xii": 12,
+	"xiii": 13, "xiv": 14, "xv": 15, "xvi": 16, "xvii": 17,
+	"xviii": 18, "xix": 19, "xx": 20, "xxxi": 31, "xxxii": 32,
+	"xxxiii": 33, "xxxiv": 34, "xxxv": 35, "xxxvi": 36, "xxxvii": 37,
+	"xxxviii": 38, "xxxix": 39, "xl": 40, "xli": 41, "xlii": 42,
+	"xliii": 43, "xliv": 44, "xlv": 45, "xlvi": 46, "xlvii": 47,
+	"xlviii": 48, "xlix": 49, "l": 50, "lxxxix": 89, "xc": 90,
+	"xci": 91, "xcii": 92, "xciii": 93, "xciv": 94, "xcv": 95,
+	"xcvi": 96, "xcvii": 97, "xcviii": 98, "xcix": 99, "c": 100,
+	"ci": 101, "cii": 102, "ciii": 103, "civ": 104, "cv": 105,
+	"cvi": 106, "cvii": 107, "cviii": 108, "cix": 109, "cxlix": 149,
+	"cccxlix": 349, "cdlvi": 456, "d": 500, "dciv": 604, "dcclxxxix": 789,
+	"dcccxlix": 849, "cmiv": 904, "m": 1000, "mvii": 1007, "mlxvi": 1066,
+	"mccxxxiv": 1234, "mdcclxxvi": 1776, "mmxxi": 2021, "mmdcccvi": 2806,
+	"mmcmxcix": 2999, "mmm": 3000, "mmmcmlxxix": 3979, "mmmcmxcix": 3999,
 }
 
 func TestFromInt(t *testing.T) {
