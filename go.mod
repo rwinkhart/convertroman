@@ -1,3 +1,3 @@
-module github.com/brandenc40/romannumeral
+module github.com/rwinkhart/convertroman
 
 go 1.15

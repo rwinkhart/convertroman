@@ -1,25 +1,21 @@
 # Go Roman Numerals
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/brandenc40/romannumeral.svg)](https://pkg.go.dev/github.com/brandenc40/romannumeral)
-[![codecov](https://codecov.io/gh/brandenc40/romannumeral/branch/master/graph/badge.svg?token=AS7IBSTE36)](https://codecov.io/gh/brandenc40/romannumeral)
-    
-## Quickly and efficiently convert to and from roman numerals in Go.
+This package was adapted from [romannumeral](https://github.com/brandenc40/romannumeral) to fit my specific minimal use-case.
 
-A reliable module using the most efficient methods possible for converting between
-roman numerals and integers in Go. Algorithms adopted from [here](https://rosettacode.org/wiki/Roman_numerals).
+All functionality except for the ability to convert integers to roman numerals has been removed.
+
+If you need any additional functionality or further documentation, please see the original package.
 
 ### Benchmark Results
 
 ```sh
-goos: darwin
-goarch: arm64
-pkg: github.com/brandenc40/romannumeral
-BenchmarkIntToString-8          56474846                20.84 ns/op            0 B/op          0 allocs/op
-BenchmarkIntToBytes-8           48157634                24.36 ns/op            0 B/op          0 allocs/op
-BenchmarkStringToInt-8          17584252                67.28 ns/op            0 B/op          0 allocs/op
-BenchmarkBytesToInt-8           18343551                64.77 ns/op            0 B/op          0 allocs/op
+goos: linux
+goarch: amd64
+pkg: github.com/rwinkhart/convertroman
+cpu: AMD Ryzen 9 3900X 12-Core Processor
+BenchmarkFromInt-24    	62046414	        21.08 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/brandenc40/romannumeral      6.111s
+ok  	github.com/rwinkhart/convertroman	1.332s
 ```
 
 ### Example
@@ -29,38 +25,14 @@ package main
 
 import (
 	"fmt"
-	rom "github.com/brandenc40/romannumeral"
+	rom "github.com/rwinkhart/convertroman"
 )
 
-func ExampleStringToInt() {
-	integer, err := rom.StringToInt("IV")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(integer == 4) // True
-}
-
-func ExampleBytesToInt() {
-	integer, err := rom.BytesToInt([]byte("IV"))
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(integer == 4) // True
-}
-
-func ExampleIntToString() {
-	roman, err := rom.IntToString(4)
+func ExampleFromInt() {
+	roman, err := rom.FromInt(4)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(roman == "IV") // True
-}
-
-func ExampleIntToBytes() {
-	roman, err := rom.IntToBytes(4)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(string(roman) == "IV") // True
 }
 ```
