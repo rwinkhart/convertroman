@@ -32,13 +32,13 @@ func TestFromInt(t *testing.T) {
 			t.Errorf("FromInt(%d) = %s; want %s", input, out, expected)
 		}
 	}
-	out := FromInt(100000)
+	out := FromInt(4000000)
 	if out != "OOB" {
-		t.Errorf("FromInt(%d) expected an error", 100000)
+		t.Errorf("FromInt(%d) expected an error", 4000000)
 	}
 	out = FromInt(0)
-	if out != "OOB" {
-		t.Errorf("FromInt(%d) expected an error", 0)
+	if out != "0" {
+		t.Errorf("FromInt(%d) something went wrong (0 should resolve to 0)", 0)
 	}
 }
 
