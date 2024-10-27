@@ -2,7 +2,10 @@
 
 This package was adapted from [romannumeral](https://github.com/brandenc40/romannumeral) to fit my specific minimal use-case.
 
-All functionality except for the ability to convert integers to **lowercase** roman numerals has been removed.
+All functionality except for the ability to convert integers to roman numerals has been removed.
+
+Since I have less functionality to worry about, I was also able to implement vinculum notation support to extend the range of supported integers to 3,999,999.
+I also added the ability to choose between uppercase and lowercase roman numerals (optimized for lowercase due to my personal use-case).
 
 If you need any additional functionality or further documentation, please see the original package.
 
@@ -28,11 +31,11 @@ import (
 	rom "github.com/rwinkhart/convertroman"
 )
 
-func ExampleFromInt() {
+func main() {
 	roman := FromInt(4)
 	if roman == "OOB" {
-		panic("Input integer is out of bounds")
+		panic("Input integer is out of bounds (greater than 3,999,999)")
 	}
-	fmt.Println(roman == "IV") // True
+	fmt.Println(roman == "iv") // True
 }
 ```

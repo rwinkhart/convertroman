@@ -1,5 +1,7 @@
 package convertroman
 
+import "strings"
+
 var (
 	// lookup arrays used for converting from an int to a roman numeral extremely quickly.
 	// method from here: https://rosettacode.org/wiki/Roman_numerals/Encode#Go
@@ -14,7 +16,6 @@ var (
 // The function will return "OOB" if the input integer is greater than
 // or equal to 4,000,000 (the roman numeral vinculum limit).
 func FromInt(input int) string {
-	// check the range of the input integer
 	if input < 1 {
 		return "0"
 	} else if input < 4000 {
@@ -24,6 +25,21 @@ func FromInt(input int) string {
 		return vinculumRange(thousands) + baseRange(remainder)
 	} else {
 		return "OOB"
+	}
+}
+
+// FromIntCapital very inefficiently converts an integer value to a CAPITAL roman numeral string.
+// Note that this package is optimized for lowercase roman numerals. As such, this function is a slow afterthought.
+func FromIntCapital(input int) string {
+	if input < 4000 {
+		// if below vinculum range, return the translated result
+		return strings.ToUpper(FromInt(input))
+	} else {
+		// if in vinculum range, remove the ANSI escape codes, capitalize the result, and reapply the ANSI escape codes
+		noPrefix := strings.TrimPrefix(FromInt(input), "\033[53m")
+		secondIndex := strings.Index(noPrefix, "\033[0m")
+		capitalPreANSI := strings.ToUpper(noPrefix[:secondIndex] + noPrefix[secondIndex+4:])
+		return "\033[53m" + capitalPreANSI[:secondIndex] + "\033[0m" + capitalPreANSI[secondIndex:]
 	}
 }
 

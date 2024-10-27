@@ -53,7 +53,7 @@ func BenchmarkFromInt(b *testing.B) {
 func ExampleFromInt() {
 	roman := FromInt(4)
 	if roman == "OOB" {
-		panic("Input integer is out of bounds")
+		panic("Input integer is out of bounds (greater than 3,999,999)")
 	}
-	fmt.Println(roman == "IV") // True
+	fmt.Println(roman == "iv") // True
 }
