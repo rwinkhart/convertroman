@@ -11,14 +11,18 @@ If you need any additional functionality or further documentation, please see th
 
 ### Benchmark Results
 
+Note that the benchmark results of this fork are slower than upstream due to the added vinculum notation support.
+This benchmark tests the highest supported integer (3,999,999) while upstream tests with 3,999.
+
 ```sh
 goos: linux
 goarch: amd64
 pkg: github.com/rwinkhart/convertroman
 cpu: AMD Ryzen 9 3900X 12-Core Processor
-BenchmarkFromInt-24    	61993154	        20.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFromInt-24           	 5372720	       237.0 ns/op	      24 B/op	       1 allocs/op
+BenchmarkFromIntCapital-24    	 2117424	       570.9 ns/op	      64 B/op	       3 allocs/op
 PASS
-ok  	github.com/rwinkhart/convertroman	1.827s
+ok  	github.com/rwinkhart/convertroman	4.098s
 ```
 
 ### Example

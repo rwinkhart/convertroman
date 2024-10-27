@@ -45,6 +45,13 @@ func TestFromInt(t *testing.T) {
 func BenchmarkFromInt(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		_ = FromInt(3999)
+		_ = FromInt(3999999)
+	}
+}
+
+func BenchmarkFromIntCapital(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		_ = FromIntCapital(3999999)
 	}
 }
