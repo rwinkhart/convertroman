@@ -1,9 +1,5 @@
 package convertroman
 
-// Currently only supports Roman Numerals without viniculum (1-3999; "OOB" is returned for values outside this range)
-// See here for details on viniculum:
-// https://en.wikipedia.org/wiki/Roman_numerals#Large_numbers
-
 var (
 	// lookup arrays used for converting from an int to a roman numeral extremely quickly.
 	// method from here: https://rosettacode.org/wiki/Roman_numerals/Encode#Go
@@ -14,13 +10,29 @@ var (
 )
 
 // FromInt converts an integer value to a roman numeral string.
-// "OOB" is returned if the integer is not between 1 and 3999.
 func FromInt(input int) string {
-	// ensure provided integer is within the valid range
-	if input < 1 || input > 3999 {
-		return "OOB"
+	// check the range of the input integer
+	if input < 1 {
+		return "0"
+	} else if input < 4000 {
+		return baseRange(input)
+	} else {
+		thousands, remainder := separateThousands(input)
+		return vinculumRange(thousands) + baseRange(remainder)
 	}
+}
 
-	// convert the integer to a roman numeral string and return it
+// separateThousands separates an integer into two parts: the thousands and the remainder.
+func separateThousands(num int) (int, int) {
+	return num / 1000, num % 1000
+}
+
+// vinculumRange returns a roman numeral string for an integer greater than 3999.
+func vinculumRange(input int) string {
+	return "\033[53m" + baseRange(input) + "\033[0m"
+}
+
+// baseRange returns a roman numeral string for an integer between 1 and 3999.
+func baseRange(input int) string {
 	return r3[input%1e4/1e3] + r2[input%1e3/1e2] + r1[input%100/10] + r0[input%10]
 }
