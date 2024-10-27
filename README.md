@@ -47,7 +47,7 @@ func main() {
 
 	// capital (slightly slower)
 	// this example uses a number in vinculum notation to show that ANSI escape codes are used to provide the overline
-	roman = rom.FromIntCapital(4)
+	roman = rom.FromIntCapital(4065)
 	if roman == "OOB" {
 		panic("Input integer is out of bounds (greater than 3,999,999)")
 	}
