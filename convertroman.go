@@ -10,15 +10,20 @@ var (
 )
 
 // FromInt converts an integer value to a roman numeral string.
+// The function will return "0" if the input integer is less than 1.
+// The function will return "OOB" if the input integer is greater than
+// or equal to 4,000,000 (the roman numeral vinculum limit).
 func FromInt(input int) string {
 	// check the range of the input integer
 	if input < 1 {
 		return "0"
 	} else if input < 4000 {
 		return baseRange(input)
-	} else {
+	} else if input < 4000000 {
 		thousands, remainder := separateThousands(input)
 		return vinculumRange(thousands) + baseRange(remainder)
+	} else {
+		return "OOB"
 	}
 }
 
