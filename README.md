@@ -32,10 +32,20 @@ import (
 )
 
 func main() {
-	roman := FromInt(4)
+	var roman string
+
+	// lowercase
+	roman = rom.FromInt(4)
 	if roman == "OOB" {
 		panic("Input integer is out of bounds (greater than 3,999,999)")
 	}
 	fmt.Println(roman == "iv") // True
+
+	// capital (slightly slower)
+	roman = rom.FromIntCapital(4)
+	if roman == "OOB" {
+		panic("Input integer is out of bounds (greater than 3,999,999)")
+	}
+	fmt.Println(roman == "IV") // True
 }
 ```

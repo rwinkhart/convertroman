@@ -1,7 +1,6 @@
 package convertroman
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -48,12 +47,4 @@ func BenchmarkFromInt(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		_ = FromInt(3999)
 	}
-}
-
-func ExampleFromInt() {
-	roman := FromInt(4)
-	if roman == "OOB" {
-		panic("Input integer is out of bounds (greater than 3,999,999)")
-	}
-	fmt.Println(roman == "iv") // True
 }
